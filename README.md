@@ -1,24 +1,7 @@
 # Bencode
 
-**TODO: Add description**
+An Elixir implementation of the BitTorrent (BEP 03) benconde encoder/decoder.
 
-## Installation
+## License
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
-
-  1. Add `bencode` to your list of dependencies in `mix.exs`:
-
-    ```elixir
-    def deps do
-      [{:bencode, "~> 0.1.0"}]
-    end
-    ```
-
-  2. Ensure `bencode` is started before your application:
-
-    ```elixir
-    def application do
-      [applications: [:bencode]]
-    end
-    ```
-
+Bencode source code is licensed under the [MIT License](LICENSE.md).
