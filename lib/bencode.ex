@@ -27,15 +27,15 @@ defmodule Bencode do
 
   # Helper function to keep encode_value() small
   defp reduce_dict(dict) do
-    for {key, value} <- dict do
-      encode_value(key) <> encode_value(value)
-    end
+    Enum.reduce(dict, "", fn({key, value}, acc) ->
+      acc <> encode_value(key) <> encode_value(value)
+    end)
   end
 
   defp encode_value(data) when is_integer(data), do: "i#{data}e"
   defp encode_value(data) when is_binary(data), do: "#{byte_size(data)}:#{data}"
-  defp encode_value(data) when is_list(data), do: "l#{reduce_list(data)}e"
-  defp encode_value(data) when is_map(data), do: "d#{reduce_dict(data)}e"
+  defp encode_value(data) when is_list(data), do: "l" <> reduce_list(data) <> "e"
+  defp encode_value(data) when is_map(data), do: "d" <> reduce_dict(data) <> "e"
 
   @doc """
   Decodes a bencoded string into Elixir data structures.
